@@ -2,8 +2,10 @@ import React from "react";
 import Link from "next/link";
 import Meals from "@/components/Meals/Meals";
 import styles from "./page.module.scss";
+import { getMeals } from "@/lib/meals";
 
-const MealsPage = () => {
+const MealsPage = async () => {
+  const meals = await getMeals();
   return (
     <>
       <header className={styles.header}>
@@ -19,7 +21,7 @@ const MealsPage = () => {
         </p>
       </header>
       <main className={styles.main}>
-        <Meals meals={[]}></Meals>
+        <Meals meals={meals}></Meals>
       </main>
     </>
   );
