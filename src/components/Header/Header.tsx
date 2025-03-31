@@ -1,9 +1,9 @@
+import React from "react";
 import Link from "next/link";
 import logoImg from "@/assets/logo.png";
-import React from "react";
-
 import BackgroundHeader from "@/components/BackgroundHeader/BackgroundHeader";
 import styles from "@/components/Header/Header.module.scss";
+import NavLink from "@/components/NavLink/NavLink";
 
 const Header = () => {
   return (
@@ -21,10 +21,10 @@ const Header = () => {
         <nav className={styles.nav}>
           <ul>
             <li>
-              <Link href={"/meals"}> Browse Meals</Link>
+              <NavLink href="/meals"> Browse Meals</NavLink>
             </li>
             <li>
-              <Link href={"/community"}> Foodies Community</Link>
+              <NavLink href="/community"> Foodies Community</NavLink>
             </li>
           </ul>
         </nav>
