@@ -1,11 +1,12 @@
 import React, { Suspense } from "react";
 import Link from "next/link";
 import Meals from "@/components/Meals/Meals";
-import styles from "./page.module.scss";
+import { Meal } from "@/types/types";
 import { getMeals } from "@/lib/meals";
+import styles from "./page.module.scss";
 
 const MealsLoaded = async () => {
-  const meals = await getMeals();
+  const meals: Meal[] = (await getMeals()) as Meal[];
   return <Meals meals={meals}></Meals>;
 };
 
