@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getMeal } from "@/lib/meals";
 import { Meal } from "@/types/types";
 import styles from "./page.module.scss";
+import { notFound } from "next/navigation";
 
 interface MealsSlugPageProps {
   params: { slug: string };
@@ -10,6 +11,10 @@ interface MealsSlugPageProps {
 
 const MealsSlugpage: React.FC<MealsSlugPageProps> = ({ params }) => {
   const meal: Meal = getMeal(params.slug) as Meal;
+  if (!meal) {
+    notFound();
+  }
+
   meal.instructions = meal.instructions.replace(/\n/g, "<br />");
 
   return (
