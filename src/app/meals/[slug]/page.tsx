@@ -11,12 +11,11 @@ interface MealsSlugpageParams {
 }
 
 interface MealsSlugpageProps {
-  params: MealsSlugpageParams; // Cambiamos a la estructura resuelta
+  params: Promise<MealsSlugpageParams>;
 }
 
-// Componente de página para la ruta dinámica /meals/[slug]
 const MealsSlugpage: NextPage<MealsSlugpageProps> = async ({ params }) => {
-  const { slug } = params;
+  const { slug } = await params;
   console.log("params.slug", slug);
   const meal: Meal = getMeal(slug);
 
