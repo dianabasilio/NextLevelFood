@@ -1,16 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import { getMeal } from "@/lib/meals";
-import { Meal } from "@/types/types";
 import styles from "./page.module.scss";
 import { notFound } from "next/navigation";
 
-interface MealsSlugPageProps {
-  params: { slug: string };
-}
-
-const MealsSlugpage: React.FC<MealsSlugPageProps> = ({ params }) => {
-  const meal: Meal = getMeal(params.slug) as Meal;
+const MealsSlugpage = ({ params }) => {
+  const meal = getMeal(params.slug);
   if (!meal) {
     notFound();
   }
@@ -21,7 +16,7 @@ const MealsSlugpage: React.FC<MealsSlugPageProps> = ({ params }) => {
     <>
       <header className={styles.header}>
         <div className={styles.image}>
-          <Image src={meal.image} alt="some image" fill></Image>
+          <Image src={meal.image} alt="some image" fill />
         </div>
         <div className={styles.headerText}>
           <h1>{meal.title}</h1>
@@ -38,7 +33,7 @@ const MealsSlugpage: React.FC<MealsSlugPageProps> = ({ params }) => {
           dangerouslySetInnerHTML={{
             __html: meal.instructions,
           }}
-        ></p>
+        />
       </main>
     </>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import logoImg from "@/assets/logo.png";
 import BackgroundHeader from "@/components/BackgroundHeader/BackgroundHeader";
 import styles from "@/components/Header/Header.module.scss";
@@ -11,11 +12,15 @@ const Header = () => {
       <BackgroundHeader></BackgroundHeader>
       <header className={styles.header}>
         <Link className={styles.logo} href={"/"}>
-          <img
-            className={styles.logoImg}
-            src={logoImg.src}
-            alt="A plate with food on it"
-          />
+          <div className={styles.logoImg}>
+            <Image
+              src={logoImg.src}
+              alt="A plate with food on it"
+              width={100}
+              height={100}
+            />
+          </div>
+
           <span>NextLevel Food</span>
         </Link>
         <nav className={styles.nav}>

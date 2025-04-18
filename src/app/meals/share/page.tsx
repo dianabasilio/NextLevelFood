@@ -1,7 +1,6 @@
 import ImagePicker from "@/components/ImagePicker/ImagePicker";
 import styles from "./page.module.scss";
 import { shareMeal } from "@/lib/action";
-import { title } from "process";
 
 export default function ShareMealPage() {
   return (

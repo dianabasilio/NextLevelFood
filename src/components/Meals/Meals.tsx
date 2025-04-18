@@ -1,15 +1,7 @@
 import React from "react";
 import MealItem from "./MealItem/MealItem";
+import { Meal } from "@/types/types";
 import styles from "@/components/Meals/Meals.module.scss";
-
-interface Meal {
-  id: string;
-  title: string;
-  slug: string;
-  image: string;
-  summary: string;
-  creator: string;
-}
 
 interface MealsProps {
   meals: Meal[];

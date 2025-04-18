@@ -5,7 +5,7 @@ import styles from "@/components/Meals/MealItem/MealItem.module.scss";
 
 interface MealItemProps {
   title: string;
-  slug: string;
+  slug?: string;
   image: string;
   summary: string;
   creator: string;
