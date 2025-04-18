@@ -7,16 +7,16 @@ interface MealsSlugpageParams {
 }
 
 interface MealsSlugpageProps {
-  params: Promise<MealsSlugpageParams>;
+  params: MealsSlugpageParams;
 }
 
 const MealsSlugpage: React.FC<MealsSlugpageProps> = async ({ params }) => {
-  const { slug } = await params;
+  const { slug } = params; // ✅ No necesitas hacer await
   console.log("params.slug", slug);
 
   return (
     <>
-      <header className={styles.header}></header>
+      <header className={styles.header}>{slug}</header>
     </>
   );
 };
