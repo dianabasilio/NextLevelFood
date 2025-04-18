@@ -1,18 +1,16 @@
 import React from "react";
-
 import styles from "./page.module.scss";
-import { NextPage } from "next";
 
-interface MealsSlugpageParams {
-  slug: string;
-}
+// ✅ No necesitas NextPage aquí, no se recomienda con el App Router
 
 interface MealsSlugpageProps {
-  params: Promise<MealsSlugpageParams>;
+  params: {
+    slug: string;
+  };
 }
 
-const MealsSlugpage: NextPage<MealsSlugpageProps> = async ({ params }) => {
-  const { slug } = await params;
+const MealsSlugpage = async ({ params }: MealsSlugpageProps) => {
+  const { slug } = params;
   console.log("params.slug", slug);
 
   return (
