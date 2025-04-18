@@ -47,7 +47,8 @@ const MealDetails = async ({ slug }) => {
 };
 
 // Componente de página para la ruta dinámica /meals/[slug]
-const MealsSlugpage = ({ params }) => {
+const MealsSlugpage = async ({ params }) => {
+  console.log("params.slug", params.slug);
   return (
     <main className={styles.main}>
       <Suspense fallback={<p className={styles.loading}>Loading meal...</p>}>
