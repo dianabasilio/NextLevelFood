@@ -1,11 +1,13 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Image from "next/image";
 import { getMeal } from "@/lib/meals";
 import styles from "./page.module.scss";
 import { notFound } from "next/navigation";
 
-const MealsSlugpage = async ({ params }) => {
-  const meal = await getMeal(params.slug);
+// Componente para cargar y mostrar los detalles de una comida
+const MealDetails = async ({ slug }) => {
+  const meal = await getMeal(slug);
+
   if (!meal) {
     notFound();
   }
@@ -16,7 +18,12 @@ const MealsSlugpage = async ({ params }) => {
     <>
       <header className={styles.header}>
         <div className={styles.image}>
-          <Image src={meal.image} alt="some image" fill />
+          <Image
+            src={meal.image}
+            alt={meal.title}
+            fill
+            style={{ objectFit: "cover" }}
+          />
         </div>
         <div className={styles.headerText}>
           <h1>{meal.title}</h1>
@@ -36,6 +43,17 @@ const MealsSlugpage = async ({ params }) => {
         />
       </main>
     </>
+  );
+};
+
+// Componente de página para la ruta dinámica /meals/[slug]
+const MealsSlugpage = ({ params }) => {
+  return (
+    <main className={styles.main}>
+      <Suspense fallback={<p className={styles.loading}>Loading meal...</p>}>
+        <MealDetails slug={params.slug} />
+      </Suspense>
+    </main>
   );
 };
 

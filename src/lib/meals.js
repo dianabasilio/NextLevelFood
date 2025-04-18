@@ -6,16 +6,18 @@ import xss from "xss";
 const db = sql("meals.db");
 
 export async function getMeals() {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   return db.prepare("SELECT * FROM meals").all();
 }
 
-export const getMeal = (slug) => {
+export const getMeal = async (slug) => {
   try {
-    return db.prepare("SELECT * FROM meals WHERE slug = ? ").get(slug);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const meal = db.prepare("SELECT * FROM meals WHERE slug = ? ").get(slug);
+    return Promise.resolve(meal);
   } catch (error) {
     console.error("Error al obtener la comida:", error);
-    return undefined;
+    return Promise.resolve(undefined);
   }
 };
 
