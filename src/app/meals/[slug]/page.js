@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./page.module.scss";
 
-const MealsSlugpage = ({ params }) => {
-  const { slug } = params; // ✅ No necesitas hacer await
+const MealsSlugpage = async ({ params }) => {
+  const { slug } = await params; // Ahora esperamos que `params` esté disponible
   console.log("params.slug", slug);
 
   return (
