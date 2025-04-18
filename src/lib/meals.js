@@ -11,7 +11,12 @@ export async function getMeals() {
 }
 
 export const getMeal = (slug) => {
-  return db.prepare("SELECT * FROM meals WHERE slug = ? ").get(slug);
+  try {
+    return db.prepare("SELECT * FROM meals WHERE slug = ? ").get(slug);
+  } catch (error) {
+    console.error("Error al obtener la comida:", error);
+    return undefined;
+  }
 };
 
 export const saveMeal = async (meal) => {
