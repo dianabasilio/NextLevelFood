@@ -4,8 +4,8 @@ import { getMeal } from "@/lib/meals";
 import styles from "./page.module.scss";
 import { notFound } from "next/navigation";
 
-const MealsSlugpage = ({ params }) => {
-  const meal = getMeal(params.slug);
+const MealsSlugpage = async ({ params }) => {
+  const meal = await getMeal(params.slug);
   if (!meal) {
     notFound();
   }
