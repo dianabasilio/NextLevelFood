@@ -1,16 +1,17 @@
 import React from "react";
+
 import styles from "./page.module.scss";
 
-// ✅ No necesitas NextPage aquí, no se recomienda con el App Router
-
-interface MealsSlugpageProps {
-  params: {
-    slug: string;
-  };
+interface MealsSlugpageParams {
+  slug: string;
 }
 
-const MealsSlugpage = async ({ params }: MealsSlugpageProps) => {
-  const { slug } = params;
+interface MealsSlugpageProps {
+  params: Promise<MealsSlugpageParams>;
+}
+
+const MealsSlugpage: React.FC<MealsSlugpageProps> = async ({ params }) => {
+  const { slug } = await params;
   console.log("params.slug", slug);
 
   return (
