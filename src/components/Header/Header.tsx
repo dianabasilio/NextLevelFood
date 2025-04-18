@@ -1,4 +1,7 @@
-import React from "react";
+"use client";
+import DehazeIcon from "@mui/icons-material/Dehaze";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logoImg from "@/assets/logo.png";
@@ -7,11 +10,17 @@ import styles from "@/components/Header/Header.module.scss";
 import NavLink from "@/components/NavLink/NavLink";
 
 const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <>
-      <BackgroundHeader></BackgroundHeader>
+      <BackgroundHeader />
       <header className={styles.header}>
-        <Link className={styles.logo} href={"/"}>
+        <Link className={styles.logo} href="/">
           <div className={styles.logoImg}>
             <Image
               src={logoImg.src}
@@ -20,11 +29,19 @@ const Header = () => {
               height={100}
             />
           </div>
-
           <span>NextLevel Food</span>
         </Link>
-        <nav className={styles.nav}>
-          <ul>
+
+        <button className={styles.mobileMenuButton} onClick={toggleMobileMenu}>
+          {isMobileMenuOpen ? (
+            <KeyboardArrowDownIcon className={styles.dehazeIcon} />
+          ) : (
+            <DehazeIcon className={styles.dehazeIcon} />
+          )}
+        </button>
+
+        <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.open : ""}`}>
+          <ul onClick={toggleMobileMenu}>
             <li>
               <NavLink href="/meals"> Browse Meals</NavLink>
             </li>

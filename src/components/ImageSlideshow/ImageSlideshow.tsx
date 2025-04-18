@@ -36,7 +36,6 @@ export default function ImageSlideshow() {
 
   return (
     <div className={styles.slideshow}>
-      HOLAAAA
       {images.map((image, index) => (
         <Image
           key={index}
