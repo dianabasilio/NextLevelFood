@@ -5,9 +5,9 @@ import styles from "./page.module.scss";
 import { notFound } from "next/navigation";
 
 const MealsSlugpage = async ({ params }) => {
-  const { slug } = await params; // Ahora esperamos que `params` esté disponible
+  const { slug } = await params;
   console.log("params.slug", slug);
-  const meal = getMeal(params.slug);
+  const meal = getMeal(slug);
   if (!meal) {
     notFound();
   }
